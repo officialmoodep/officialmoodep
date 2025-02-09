@@ -2,7 +2,7 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>Official Mood EP</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
   <style>
@@ -192,10 +192,10 @@
     let car = document.querySelector('.car');
     function moveCar() {
       let carPosition = parseInt(getComputedStyle(car).left);
-      if (carPosition < window.innerWidth) {
-        car.style.left = (carPosition + 2) + 'px';
+      if (carPosition < window.innerWidth-150) {
+        car.style.left = (carPosition + 5) + 'px';
       } else {
-        car.style.left = '-200px';
+        car.style.left = '-150px';
       }
     }
     setInterval(moveCar, 20);
