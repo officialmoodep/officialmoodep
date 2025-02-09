@@ -4,23 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Official Mood EP</title>
-  <!-- لینک فونت فارسی وزیر -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
   <style>
-    /* استایل کلی */
     body {
       margin: 0;
       padding: 0;
       font-family: 'Vazir', sans-serif;
-      background-color: #111;
+      background-color: #000;
       color: #fff;
       overflow-x: hidden;
       position: relative;
       font-size: 18px;
-      min-height: 1500px; /* صفحه طولانی‌تر شده */
+      min-height: 1500px;
     }
-    
-    /* افکت ماتریکس (پس‌زمینه) */
+
     canvas {
       position: fixed;
       top: 0;
@@ -29,8 +26,7 @@
       height: 100%;
       z-index: -1;
     }
-    
-    /* افکت موج کلیک */
+
     .ripple {
       position: absolute;
       width: 20px;
@@ -47,8 +43,7 @@
         opacity: 0;
       }
     }
-    
-    /* توضیحات صفحه – بالای دکمه اینستاگرام */
+
     .page-info {
       text-align: center;
       margin-top: 20px;
@@ -58,15 +53,13 @@
     .page-info h1 {
       font-size: 36px;
       margin-bottom: 10px;
-      text-shadow: 0 0 8px #ff0080, 0 0 16px #00ffff;
+      text-shadow: 0 0 8px #00ff00, 0 0 16px #008000;
     }
     .page-info p {
-      margin: 5px 0;
       font-size: 20px;
-      text-shadow: 0 0 4px #ff0080, 0 0 8px #00ffff;
+      text-shadow: 0 0 4px #00ff00, 0 0 8px #008000;
     }
-    
-    /* دکمه اینستاگرام – متن وسط */
+
     .instagram-button {
       display: block;
       margin: 10px auto;
@@ -74,10 +67,8 @@
       background-color: #d62976;
       color: white;
       font-size: 20px;
-      font-weight: bold;
       border-radius: 25px;
-      text-decoration: none;
-      text-align: center; /* متن در وسط */
+      text-align: center;
       transition: 0.3s ease;
       box-shadow: 0 0 10px rgba(214, 41, 118, 0.8);
     }
@@ -85,8 +76,7 @@
       background-color: #e1306c;
       box-shadow: 0 0 15px rgba(225, 48, 108, 1);
     }
-    
-    /* گالری – در بالاترین لایه */
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -106,8 +96,7 @@
     .gallery img:hover {
       transform: scale(1.05);
     }
-    
-    /* حالت تمام صفحه عکس */
+
     .fullscreen {
       display: none;
       position: fixed;
@@ -132,17 +121,16 @@
       color: white;
       cursor: pointer;
     }
-    
-    /* بخش پایین صفحه: کانتینر برای جاده و ماشین */
+
     .footer-scene {
       position: relative;
       width: 100%;
-      height: 250px; /* ارتفاع این بخش قابل تنظیم است */
+      height: 250px;
       margin-top: 50px;
     }
     .road {
       position: absolute;
-      bottom: 50;
+      bottom: 150px;
       left: 0;
       width: 100%;
       height: 100px;
@@ -152,7 +140,6 @@
     }
     .car {
       position: absolute;
-
       left: -150px;
       width: 200px;
       height: 100px;
@@ -161,108 +148,88 @@
       background-position: center;
       z-index: 1;
     }
+
+    @media (max-width: 768px) {
+      .page-info h1 { font-size: 28px; }
+      .page-info p { font-size: 16px; }
+      .gallery { grid-template-columns: repeat(1, 1fr); }
+      .gallery img { height: auto; }
+      .car { width: 150px; height: 80px; }
+      .road { height: 80px; }
+    }
   </style>
 </head>
 <body>
-  <!-- افکت ماتریکس (پس‌زمینه) -->
   <canvas id="matrixCanvas"></canvas>
-  
-  <!-- توضیحات صفحه (بالای دکمه اینستاگرام) -->
+
   <div class="page-info">
-    <h1>Official Mood EP</h1>
-    <p>صفحه‌ای برای ماشین‌بازها و متن‌های الهام‌بخش!</p>
-    <p>دنبال کنید برای محتوای خفن‌تر!</p>
+    <h1>Official Moodep</h1>
+    <p>!!صفحه‌ای برای ماشین‌بازها و متن‌های الهام‌بخش!!</p>
   </div>
-  
-  <!-- دکمه اینستاگرام -->
+
   <a href="https://www.instagram.com/officialmoodep?igsh=aG0yN3p2OXhjZXQ3" target="_blank" class="instagram-button">
     Follow on Instagram
   </a>
-  
-  <!-- گالری -->
+
   <div class="gallery">
     <img src="https://i.postimg.cc/DzWvhHGy/1000029606-fotor-enhance-20250209142223.png" onclick="openFullScreen(this)">
     <img src="https://i.postimg.cc/jSSqgLdf/1000029603-fotor-enhance-20250209142452.png" onclick="openFullScreen(this)">
     <img src="https://i.postimg.cc/vT78jnVr/1000029612-fotor-enhance-20250209142737.png" onclick="openFullScreen(this)">
     <img src="https://i.postimg.cc/W3k1GCpf/1000029611-fotor-enhance-2025020914284.png" onclick="openFullScreen(this)">
   </div>
-  
-  <!-- بخش پایین صفحه: جاده و ماشین -->
+
   <div class="footer-scene">
     <div class="road"></div>
     <div class="car"></div>
   </div>
-  
-  <!-- نمایش تمام صفحه عکس -->
+
   <div class="fullscreen" id="fullscreenView" onclick="closeFullScreen()">
     <span>&times;</span>
     <img id="fullscreenImage">
   </div>
-  
+
   <script>
-    // حرکت ماشین: ماشین در کانتینر پایین صفحه حرکت می‌کند
     let car = document.querySelector('.car');
     function moveCar() {
       let carPosition = parseInt(getComputedStyle(car).left);
       if (carPosition < window.innerWidth) {
-        car.style.left = (carPosition + 5) + 'px';
+        car.style.left = (carPosition + 2) + 'px';
       } else {
-        car.style.left = '-150px';
+        car.style.left = '-200px';
       }
     }
     setInterval(moveCar, 20);
-    
-    // افکت موج کلیک
-    document.addEventListener('click', function(e) {
-      let ripple = document.createElement('div');
-      ripple.classList.add('ripple');
-      ripple.style.left = e.clientX + "px";
-      ripple.style.top = e.clientY + "px";
-      document.body.appendChild(ripple);
-      setTimeout(function() {
-        ripple.remove();
-      }, 600);
-    });
-    
-    // ماتریکس بارانی
-    const canvas = document.getElementById('matrixCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(0);
+
+    let matrix = document.getElementById('matrixCanvas');
+    let ctx = matrix.getContext('2d');
+    matrix.width = window.innerWidth;
+    matrix.height = window.innerHeight;
+    let chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let columns = matrix.width / 20;
+    let drops = Array.from({ length: columns }).fill(1);
     function drawMatrix() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#0F0';
-      ctx.font = fontSize + 'px monospace';
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        drops[i] = drops[i] * fontSize > canvas.height ? 0 : drops[i] + 1;
-      }
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, matrix.width, matrix.height);
+      ctx.fillStyle = "#0F0";
+      ctx.font = "20px monospace";
+      drops.forEach((y, i) => {
+        let text = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(text, i * 20, y * 20);
+        drops[i] = y * 20 > matrix.height || Math.random() > 0.95 ? 0 : y + 1;
+      });
     }
-    setInterval(drawMatrix, 33);
-    
-    // تابع باز و بسته کردن حالت تمام صفحه عکس
-    function openFullScreen(imgElement) {
-      const fullscreenView = document.getElementById('fullscreenView');
-      const fullscreenImage = document.getElementById('fullscreenImage');
-      fullscreenImage.src = imgElement.src;
-      fullscreenView.style.display = 'flex';
-    }
-    function closeFullScreen() {
-      const fullscreenView = document.getElementById('fullscreenView');
-      fullscreenView.style.display = 'none';
-    }
-    
-    // به‌روزرسانی ابعاد canvas هنگام تغییر اندازه پنجره
-    window.addEventListener('resize', function() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+    setInterval(drawMatrix, 50);
+
+    function openFullScreen(img) {
+  let fullScreenDiv = document.getElementById("fullscreenView");
+  let fullScreenImg = document.getElementById("fullscreenImage");
+  fullScreenImg.src = img.src;
+  fullScreenDiv.style.display = "flex";
+}
+
+function closeFullScreen() {
+  document.getElementById("fullscreenView").style.display = "none";
+}
   </script>
 </body>
 </html>
